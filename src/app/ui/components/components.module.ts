@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProdcutsModule } from './prodcuts/prodcuts.module';
 import { HomeModule } from './home/home.module';
 import { BasketsModule } from './baskets/baskets.module';
+import { ProductsModule } from './products/products.module';
 
 
 
@@ -10,7 +10,7 @@ import { BasketsModule } from './baskets/baskets.module';
   declarations: [],
   imports: [
     CommonModule,
-    ProdcutsModule,
+    ProductsModule,
     HomeModule,
     BasketsModule
   ]
