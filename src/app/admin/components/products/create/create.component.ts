@@ -20,6 +20,22 @@ create(name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
  create_product.Name = name.value;
  create_product.Stock = parseInt(stock.value);
  create_product.Price = parseFloat(price.value);
+ if(!name.value) {
+  this.alertify.message("lütgfen ürün adını girin",{
+    dismissOthers:true,
+    messageType:MessageType.Error,
+    position:Position.TopRight
+  });
+  return; 
+ }
+ if(parseInt(stock.value)<0) {
+  this.alertify.message("lütfen stock bilgisi girin",{
+    dismissOthers:true,
+    messageType:MessageType.Error,
+    position:Position.TopRight
+  });
+  return; 
+ }
 
  this.productService.create(create_product, ()=> 
  {
@@ -27,6 +43,12 @@ create(name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
   this.alertify.message("ürün başarıyla eklenmiştir",{
     dismissOthers:true,
     messageType:MessageType.Success,
+    position:Position.TopRight
+  });
+},(message)=>{
+  this.alertify.message(message,{
+    dismissOthers:true,
+    messageType:MessageType.Error,
     position:Position.TopRight
   });
 }
