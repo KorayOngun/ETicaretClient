@@ -14,7 +14,6 @@ import { ListComponent } from './list/list.component';
 
 export class ProductsComponent extends BaseComponent implements OnInit {
 
-
   constructor(spinner:NgxSpinnerService, private productService: ProductService,private alertifyService: AlertifyService) {
     super(spinner);
   }
@@ -23,8 +22,7 @@ export class ProductsComponent extends BaseComponent implements OnInit {
   }
 
   @ViewChild(ListComponent) listComponents: ListComponent
-  createdProduct(p: Create_Product) {
+  createdProduct(p: Create_Product) { //TODO : Param. gerekli mi?
     this.listComponents.getProducts();
   }
 }
-
