@@ -20,6 +20,7 @@ export class ListComponent extends BaseComponent implements OnInit{
   dataSource: MatTableDataSource<List_Product> =null;
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(spinner:NgxSpinnerService, private productService: ProductService,private alertifyService: AlertifyService) {
     super(spinner);
   }
