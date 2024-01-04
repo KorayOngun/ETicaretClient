@@ -8,20 +8,22 @@ import { ListComponent } from './list/list.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
 })
-
 export class ProductsComponent extends BaseComponent implements OnInit {
-
-  constructor(spinner:NgxSpinnerService, private productService: ProductService,private alertifyService: AlertifyService) {
+  constructor(
+    spinner: NgxSpinnerService,
+    private productService: ProductService,
+    private alertifyService: AlertifyService
+  ) {
     super(spinner);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  @ViewChild(ListComponent) listComponents: ListComponent
-  createdProduct(p: Create_Product) { //TODO : Param. gerekli mi?
+  @ViewChild(ListComponent) listComponents: ListComponent;
+  createdProduct(p: Create_Product) {
+    //TODO : Param. gerekli mi?
     this.listComponents.getProducts();
   }
 }
