@@ -5,13 +5,13 @@ import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 @Component({
   selector: 'app-baskets',
   templateUrl: './baskets.component.html',
-  styleUrls: ['./baskets.component.scss']
+  styleUrls: ['./baskets.component.scss'],
 })
 export class BasketsComponent extends BaseComponent implements OnInit {
-constructor(s: NgxSpinnerService){
-  super(s);
-}
+  constructor(s: NgxSpinnerService) {
+    super(s);
+  }
   ngOnInit(): void {
-    this.showSpinner(SpinnerType.BallAtom);
+    // this.showSpinner(SpinnerType.BallAtom);
   }
 }

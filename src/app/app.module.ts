@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { FileUploadModule } from './services/common/file-upload/file-upload.module';
 import { DialogModule } from './dialogs/dialog.module';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,10 +26,16 @@ import { DialogModule } from './dialogs/dialog.module';
     HttpClientModule,
     DialogModule,
     FileUploadModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem("accessToken"),
+        allowedDomains: ["localhost:7172"],
+      }
+    })
   ],
   providers: [
     { provide: 'baseUrl', useValue: 'https://localhost:7172/api', multi: true },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

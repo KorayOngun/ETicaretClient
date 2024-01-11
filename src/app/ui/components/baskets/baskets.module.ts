@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
     BasketsComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild([
-      {path:"",component:BasketsComponent}
+    CommonModule, RouterModule.forChild([
+      { path: "", component: BasketsComponent }
     ])
   ]
 })

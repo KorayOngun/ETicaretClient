@@ -1,0 +1,58 @@
+<div class="row m-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
+            <div class="mb-3">
+                <label for="nameSurname" class="form-label">Ad Soyad</label>
+                <input type="text" minlength="4" formControlName="nameSurname" class="form-control"
+                    placeholder="Ad Soyad" id="nameSurname" aria-describedby="emailHelp"
+                    [ngClass]="{'is-invalid': component['nameSurname'].errors}">
+                <span class="invalid-feedback"
+                    *ngIf="submitted && (component['nameSurname']?.errors??['required'] ?? true)">
+                    lütfen boş geçmeyiniz
+                </span>
+                <span class="invalid-feedback"
+                    *ngIf="submitted && (component['nameSurname'].errors??['minlength'] || component['nameSurname'].errors??['maxLength'])">
+                    lütfen 3 ile 50 karakter gir
+                </span>
+            </div>
+            <div class="mb-3">
+                <label for="userName" class="form-label">Kullanıcı Adı</label>
+                <input type="text" minlength="3" formControlName="userName" class="form-control"
+                    placeholder="Kullanıcı Adı" id="userName" [ngClass]="{'is-invalid': component['userName'].errors}"
+                    aria-describedby="emailHelp">
+                <span class="invalid-feedback" *ngIf="submitted && component['userName']?.errors??['required']">
+                    lütfen boş geçmeyiniz
+                </span>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email"
+                    [ngClass]="{'is-invalid': component['email'].errors}" id="email" placeholder="Email"> <span
+                    class="invalid-feedback" *ngIf="submitted && component['email']?.errors??['required']">
+                    lütfen boş geçmeyiniz
+                </span> <span class="invalid-feedback" *ngIf="submitted && component['email']?.errors??['email']">
+                    lütfen geçerli mail adresi girin
+                </span>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Şifre</label>
+                <input type="password" class="form-control" formControlName="password"
+                    [ngClass]="{'is-invalid': component['password'].errors}" id="password">
+            </div>
+            <div class="mb-3">
+                <label for="passwordCheck" class="form-label">Şifre Tekrar</label>
+                <input type="password" class="form-control" formControlName="passwordConfirm"
+                    [ngClass]="{'is-invalid': component['passwordConfirm'].errors}" id="passwordCheck">
+                <span class="invalid-feedback" *ngIf="frm.hasError('notSame')">şifreler aynı
+                    olmalı</span>
+            </div>
+            <span class="invalid-feedback" *ngIf="frm.errors??['notSame']">şifreler aynı
+                olmalı</span>
+            <br>
+            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+<br />
