@@ -11,10 +11,16 @@
             <label for="password" class="form-label">Şifre</label>
             <input #txtPassword type="password" class="form-control" formControlName="password" id="password">
         </div>
-        <button type="submit" (click)="login(txtUserNameOrEmail.value,txtPassword.value)" style="margin-top: 5px;"
+        <div>
+            
+                <button type="submit" (click)="login(txtUserNameOrEmail.value,txtPassword.value)" style="margin-top: 5px;"
             class="btn btn-primary">Giriş Yap</button>
 
-        <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>
+                <a style=" margin-top: 5px;margin-left: 5px;" routerLink="/password-reset" class="btn btn-secondary">
+                    şifremi unuttum
+            </a>
+            
+            <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>            
     </div>
     <div class="col-md-3"></div>
 </div>
