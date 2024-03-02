@@ -10,7 +10,7 @@ import { List_Product_Image } from 'src/app/contracts/list_product_image';
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private httpClientService: HttpClientService) {}
+  constructor(private httpClientService: HttpClientService) { }
 
   create(product: Create_Product, successCallBack?: any, errorCallBack?: any) {
     this.httpClientService
@@ -44,10 +44,10 @@ export class ProductService {
     size: number = 5,
     successCallBack?: any,
     errorCallBack?: any
-  ): Promise<{ totalCount: number; products: List_Product[] }> {
+  ): Promise<{ totalProductCount: number; products: List_Product[] }> {
     const result = firstValueFrom(
       this.httpClientService.get<{
-        totalCount: number;
+        totalProductCount: number;
         products: List_Product[];
       }>({
         controller: 'products',
@@ -101,4 +101,16 @@ export class ProductService {
     await firstValueFrom(deleteObservable);
     successCallBack();
   }
+
+  async changeShowcaseImage(imageId: string, productId: string, successCallBack?: () => void): Promise<void> {
+    const changeShowcaseObservable = this.httpClientService.get({
+      controller: "products",
+      action: "ChangeShowcaseImage",
+      query: `imageId=${imageId}&productId=${productId}`
+    });
+
+    await firstValueFrom(changeShowcaseObservable);
+    successCallBack();
+  }
+
 }

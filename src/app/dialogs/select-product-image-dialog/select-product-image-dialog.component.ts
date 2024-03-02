@@ -22,8 +22,8 @@ declare var $: any;
 })
 export class SelectProductImageDialogComponent
   extends BaseDialog<SelectProductImageDialogComponent>
-  implements OnInit
-{
+  implements OnInit {
+
   constructor(
     dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
@@ -70,6 +70,14 @@ export class SelectProductImageDialogComponent
       },
     });
   }
+
+  showCase(imageId: string) {
+    this.spinner.show(SpinnerType.BallAtom)
+    this.productService.changeShowcaseImage(imageId, this.data as string, () => {
+      this.spinner.hide(SpinnerType.BallAtom);
+    })
+  }
+
 }
 
 export enum SelectProductImageState {

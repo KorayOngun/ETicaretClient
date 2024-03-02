@@ -5,4 +5,5 @@ export class Token {
 class token {
     accessToken: string;
     expiration: Date;
+    refreshToken: string;
 }

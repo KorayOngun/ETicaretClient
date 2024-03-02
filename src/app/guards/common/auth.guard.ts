@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService, _isAuthenticated } from 'src/app/services/common/auth.service';
 import { CustomToastrService, ToasterPosition, ToastrMessageType } from 'src/app/services/ui/custom-toastr.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
@@ -9,16 +10,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
   const toastr = inject(CustomToastrService);
 
-  const token: string = localStorage.getItem("accessToken");
-  // const expirationDate: Date = jwtHelper.getTokenExpirationDate(token);
-  let expired: boolean;
-
-  try {
-    expired = jwtHelper.isTokenExpired(token);
-  } catch (error) {
-    expired = true;
-  }
-  if (!token || expired) {
+  if (!_isAuthenticated) {
     router.navigate(["login"], { queryParams: { returnUrl: state.url } });
     toastr.message("oturum açmanız gerekiyor", "Yetkisiz Erişim", {
       messageType: ToastrMessageType.Error,
@@ -26,6 +18,5 @@ export const authGuard: CanActivateFn = (route, state) => {
     })
     return false;
   }
-
   return true;
 };

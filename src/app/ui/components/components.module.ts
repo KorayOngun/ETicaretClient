@@ -19,7 +19,9 @@ import { LoginModule } from './login/login.module';
     HomeModule,
     BasketsModule,
     RegisterModule,
-    LoginModule
+  ],
+  exports: [
+    BasketsModule
   ]
 })
 export class ComponentsModule { }

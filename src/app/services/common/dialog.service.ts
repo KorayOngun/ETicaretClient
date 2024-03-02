@@ -6,7 +6,7 @@ import { ComponentType } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class DialogService {
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
   openDialog(dialogParameters: Partial<DialogParameter>): void {
     const dialogRef = this.dialog.open(dialogParameters.componentType, {

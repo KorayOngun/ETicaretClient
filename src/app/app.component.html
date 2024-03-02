@@ -14,21 +14,28 @@
               <a class="nav-link active" aria-current="page" routerLink="">Ana Sayfa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="product">Ürünler</a>
+              <a class="nav-link active" aria-current="page" routerLink="products">Ürünler</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" routerLink="basket">Sepet</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="register"
+                *ngIf="!authService.isAuthenticated">Kayıt Ol</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="register">Kayıt Ol</a>
+              <a class="nav-link active" aria-current="page" routerLink="login"
+                *ngIf="!authService.isAuthenticated">Giriş Yap</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="login">Giriş Yap</a>
+              <a class="nav-link active" aria-current="page" style="color: red;cursor: pointer;"
+                *ngIf="authService.isAuthenticated" (click)="signOut()">Çıkış Yap</a>
             </li>
             <li class="nav-item">
-              <a routerLink="admin" class="btn btn-outline-success" type="submit">Yönetim Paneli</a>
+              <a routerLink="admin" class="btn btn-outline-success" type="submit"
+                *ngIf="authService.isAuthenticated">Yönetim Paneli</a>
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Dropdown
@@ -43,17 +50,21 @@
                   <a class="dropdown-item" href="#">Something else here</a>
                 </li>
               </ul>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
+            </li> -->
           </ul>
-          <form class="d-flex" role="search">
+          <!-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">
               Search
             </button>
-          </form>
+          </form> -->
+          <div class="d-flex">
+            <button class="btn btn-outline-success" (click)="loadComponent()" data-bs-toggle="modal"
+              data-bs-target="#basketModal">Sepet</button>
+          </div>
         </div>
       </div>
     </nav>
@@ -69,5 +80,15 @@
 </div>
 
 <ngx-spinner name="s1" size="default" type="ball-spin-clockwise-fade-rotating"></ngx-spinner>
-<ngx-spinner name="s2" size="default" type="ball-scale-multiple"></ngx-spinner><ngx-spinner name="s3" size="default"
-  type="ball-atom"></ngx-spinner>
+<ngx-spinner name="s2" size="default" type="ball-scale-multiple"></ngx-spinner>
+<ngx-spinner name="s3" size="default" type="ball-atom"></ngx-spinner>
+
+
+<!-- <app-baskets></app-baskets> -->
+
+<div class="modal fade" id="basketModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <ng-template appDynamicLoadComponent>
+    </ng-template>
+  </div>
+</div>s

@@ -45,7 +45,7 @@ export class RegisterComponent extends BaseComponent implements OnInit {
   submitted: boolean = false;
   async onSubmit(user: User) {
     this.submitted = true;
-    debugger;
+
     if (this.frm.invalid) {
       return
     } else {
